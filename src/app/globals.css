@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 255, 255, 255;
+  --background-color: #000000;
+  --border-color: #575d5d;
+  --font-color: #ffffff9c;
+  --reverse-font-color: #ffffff;
+  --content-color: rgb(179, 179, 179);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-color: #000000;
+    --border-color: #575d5d;
+    --font-color: #ffffff9c;
+    --reverse-font-color: #ffffff;
+    --content-color: rgb(179, 179, 179);
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background-color: var(--background-color);
+}
+.header {
+  transform: translateY(-100%);
+  transition: transform 0.3s ease; /* 부드러운 애니메이션 효과 */
+}
+.header.show {
+  transform: translateY(0);
+}
+
+.skeleton_loading {
+  background: linear-gradient(120deg, #e5e5e5 30%, #f0f0f0 38%, #f0f0f0 40%, #e5e5e5 48%);
+  border-radius: 1rem;
+  background-size: 200% 100%;
+  background-position: 100% 0;
+  animation: load 1s infinite;
+}
+
+.field-fill-color {
+  fill: var(--reverse-font-color);
+  background-color: transparent;
+}
+
+@keyframes load {
+  100% {
+      background-position: -100% 0;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
