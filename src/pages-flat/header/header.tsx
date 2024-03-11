@@ -8,7 +8,7 @@ import React, { Fragment, useEffect, useRef, useState } from "react";
 const MenuButton = ({ onClick }: { onClick: () => void }) => {
   return (
     <Row
-      className={`my-0 mr-0 ml-auto justify-between lg:hidden`}
+      className={`my-0 mr-0 ml-auto justify-between`}
       onClick={onClick}
     >
       <svg
@@ -53,9 +53,9 @@ export default function Header() {
       ref={headerRef}
       as="header"
       className={`
-      w-full py-[0.6rem] px-6 overflow-auto border-b-[1px] lg:px-[6rem]
+      w-full py-[0.6rem] px-6 overflow-auto
       sticky top-0 bottom-0 left-0 right-0 z-[5] bg-[var(--background-color)]
-      header ${isHeaderVisible ? "show" : ""}`}
+      header show`}
     >
       <Row>
         <Link href={"/"} className="font-bold text-[2rem]" aria-label="menu">
@@ -67,7 +67,7 @@ export default function Header() {
           ></Image>
         </Link>
       </Row>
-      <Row className="my-0 mr-0 ml-auto justify-around hidden lg:flex">
+      <Row className="my-0 mr-0 ml-auto justify-around ">
         {/* <LinkWrapper links={links} /> */}
       </Row>
       <MenuButton onClick={toggleSidebar} />
