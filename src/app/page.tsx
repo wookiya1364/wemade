@@ -1,13 +1,10 @@
-import CoinRank from "@pages-flat/coin/rank";
-// import TokenRank from "@pages-flat/token/rank";
+import Main from "@pages-flat/main/page";
 import { Column } from "@shared/index";
 
 export default function Home() {
-
   return (
-    <Column as="main">
-      <CoinRank></CoinRank>
-      {/* <TokenRank></TokenRank> */}
+    <Column as="main" className="px-5">
+      <Main></Main>
     </Column>
   );
 }

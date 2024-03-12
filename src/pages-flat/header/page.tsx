@@ -3,16 +3,13 @@
 import { Row } from "@shared/index";
 import Image from "next/image";
 import Link from "next/link";
-import React, { Fragment, useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 const MenuButton = ({ onClick }: { onClick: () => void }) => {
   return (
-    <Row
-      className={`my-0 mr-0 ml-auto justify-between`}
-      onClick={onClick}
-    >
+    <Row className={`my-0 mr-0 ml-auto justify-between`} onClick={onClick}>
       <svg
-        className="cursor-pointer field-fill-color"
+        className="cursor-pointer reverse-fill-color"
         width="30px"
         height="30px"
         viewBox="0 0 24 24"
@@ -49,21 +46,18 @@ export default function Header() {
   }, []);
 
   return (
-    <Row
-      ref={headerRef}
-      as="header"
-      className={`
-      w-full py-[0.6rem] px-6 overflow-auto
-      sticky top-0 bottom-0 left-0 right-0 z-[5] bg-[var(--background-color)]
-      header show`}
-    >
+    <Row ref={headerRef} as="header" className="header show">
       <Row>
         <Link href={"/"} className="font-bold text-[2rem]" aria-label="menu">
           <Image
             alt=""
             src="https://cache.wemixplay.com/WEMIXPLAY-RENEWAL/assets/images/header/logo-wemixplay.svg"
+            style={{
+              width: "auto"
+            }}
             width={150}
             height={50}
+            priority
           ></Image>
         </Link>
       </Row>

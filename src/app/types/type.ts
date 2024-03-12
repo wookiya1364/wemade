@@ -113,3 +113,11 @@ type TCoin = {
   supportedChain: boolean | null;
   price: boolean | null;
 }
+
+type TGame = {
+  title: string;
+  message: string;  
+  img: string;
+}
+
+type TGameTitle = Pick<TGame, "title">;

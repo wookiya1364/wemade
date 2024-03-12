@@ -26,10 +26,32 @@ body {
   color: rgb(var(--foreground-rgb));
   background-color: var(--background-color);
 }
+
 .header {
+  /* 부드러운 애니메이션 효과 */
   transform: translateY(-100%);
-  transition: transform 0.3s ease; /* 부드러운 애니메이션 효과 */
+  transition: transform 0.3s ease;
+
+  -webkit-backdrop-filter: blur(50px);
+  backdrop-filter: blur(50px);
+  background: rgba(12, 12, 24, .7);
+
+  position: sticky;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  z-index: 5;
+  width: 100%;
+  
+  padding-top: 0.6rem;
+  padding-bottom: 0.6rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  overflow: auto;
+  align-items: center;
 }
+
 .header.show {
   transform: translateY(0);
 }
@@ -42,14 +64,140 @@ body {
   animation: load 1s infinite;
 }
 
-.field-fill-color {
+.reverse-fill-color {
   fill: var(--reverse-font-color);
   background-color: transparent;
 }
 
+.img-blur {
+  position: absolute;
+  top: 0;
+  z-index: -1;
+  height: 100%;
+  filter: blur(10px);
+}
+
+.banner-blur {
+  position: absolute;
+  top: -10vh;
+  z-index: -1;
+  width: 100%;
+  height: 100vh;
+}
+
+.banner-blur:before {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  -webkit-backdrop-filter: blur(50px);
+  backdrop-filter: blur(50px);
+  background: linear-gradient(180deg, rgba(12, 12, 24, .3) 12.06%, #0c0c18 90%);
+  content: "";
+  transform: translateZ(0)
+}
+
+.banner-blur:after {
+  position: absolute;
+  top: -100px;
+  left: 50%;
+  display: block;
+  width: 100%;
+  height: 200px;
+  background: linear-gradient(180deg, #0c0c18 40%, rgba(12, 12, 24, 0));
+  content: "";
+  transform: translate(-50%, 80px)
+}
+
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+
+.swiper-img {
+  position: absolute;
+  top: 5vh;
+  width: auto;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: transparent;
+
+  /* Center slide text vertically */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* .swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+} */
+
+.autoplay-progress {
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  z-index: 10;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: var(--swiper-theme-color);
+}
+
+.autoplay-progress svg {
+  --progress: 0;
+  position: absolute;
+  left: 0;
+  top: 0px;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  stroke-width: 4px;
+  stroke: var(--swiper-theme-color);
+  fill: none;
+  stroke-dashoffset: calc(125.6 * (1 - var(--progress)));
+  stroke-dasharray: 125.6;
+  transform: rotate(-90deg);
+}
+
+
+/**
+  scrollbar css
+*/
+::-webkit-scrollbar {
+  position: absolute;
+  width: 6px;
+  height: 6px
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: hsla(0, 0%, 96%, .2)
+}
+
+::-webkit-scrollbar-thumb,
+::-webkit-scrollbar-track {
+  border-radius: 8px
+}
+
 @keyframes load {
   100% {
-      background-position: -100% 0;
+    background-position: -100% 0;
   }
 }
 

@@ -6,7 +6,8 @@ export default function useToken() {
         queryKey: ['token'],
         queryFn: () => fetch(`${HOST}/token/data.json`, {
             method: "GET",
-        }).then(res => res.json())
+        }).then(res => res.json()),
+        staleTime: 1000 * 60,
     });
 
     return {

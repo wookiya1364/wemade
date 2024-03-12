@@ -6,7 +6,8 @@ export default function useCoin() {
         queryKey: ['coin'],
         queryFn: () => fetch(`${HOST}/coin/data.json`, {
             method: "GET",
-        }).then(res => res.json())
+        }).then(res => res.json()),
+        staleTime: 1000 * 60,
     });
 
     return {
