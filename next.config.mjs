@@ -7,6 +7,12 @@ const nextConfig = {
                 hostname: 'cache.wemixplay.com',
                 port: '',
                 pathname: '/**',
+            },
+            {
+                protocol: 'https',
+                hostname: 'www.apple.com',
+                port: '',
+                pathname: '/**',
             }
         ]
     }
