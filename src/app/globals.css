@@ -91,6 +91,40 @@ body {
   position: relative;
 }
 
+.two-grid {
+  display: grid;
+  /* grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); */
+  grid-template-columns: repeat(1, 1fr);
+  grid-template-rows: auto auto; 
+  gap: 10px; /* 그리드 아이템 사이의 간격 */
+}
+.three-grid {
+  display: grid;
+  /* grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); */
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: auto auto; 
+  gap: 10px; /* 그리드 아이템 사이의 간격 */
+}
+
+.four-grid {
+  display: grid;
+  /* grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); */
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto auto; 
+  gap: 10px; /* 그리드 아이템 사이의 간격 */
+}
+
+.grid-item {
+  padding: 20px; /* 패딩으로 내용과 테두리 사이의 공간 설정 */
+  text-align: center; /* 텍스트 중앙 정렬 */
+  /* border: 1px solid #ccc;  */
+}
+
+/* 첫 번째 아이템을 첫 번째 행에 걸쳐 확장 */
+.grid-item:first-child {
+  grid-column: 1 / -1; /* 첫 번째 열에서 시작하여 마지막 열까지 확장 */
+}
+
 /* 재생 버튼 모양을 위한 스타일 */
 .play-button-background {
   -webkit-backdrop-filter: blur(7px);

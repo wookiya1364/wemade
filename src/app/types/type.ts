@@ -126,3 +126,7 @@ type TGalleryTitle = {
   inView: boolean;
   description: string;
 }
+type TVideoGalleryTitle = {
+  inView: boolean;
+  description: string;
+}

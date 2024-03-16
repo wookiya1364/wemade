@@ -17,8 +17,8 @@ export default function GalleryTitle({
         }}
         transition={{ duration: 0.7 }}
       >
-        {description.split("\n").map((str) => (
-          <Fragment key={str}>
+        {description.split("\n").map((str, idx) => (
+          <Fragment key={`${str}-${idx}`}>
             {str}
             <br/>
           </Fragment>
