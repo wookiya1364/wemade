@@ -126,10 +126,3 @@ type TGalleryTitle = {
   inView: boolean;
   description: string;
 }
-
-interface TGallery extends React.ObjectHTMLAttributes<HTMLImageElement> {
-  description: string;
-  playRef?: React.ForwardedRef<HTMLDivElement>
-  label: string;
-  srcSet:string;
-}

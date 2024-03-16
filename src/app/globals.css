@@ -25,13 +25,9 @@
 body {
   color: rgb(var(--foreground-rgb));
   background-color: var(--background-color);
-
-  width: 100vw;
-  height: 300vh;
-  overflow-x: hidden;
+  width: 100%;
   padding: 0;
   margin: 0;
-
 }
 
 .header {
@@ -39,9 +35,9 @@ body {
   transform: translateY(-100%);
   transition: transform 0.3s ease;
 
-  -webkit-backdrop-filter: blur(50px);
-  backdrop-filter: blur(50px);
-  background: rgba(12, 12, 24, .7);
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+  background: rgba(12, 12, 24, .1);
 
   position: sticky;
   top: 0px;
@@ -79,12 +75,45 @@ body {
   left: 44px;
 }
 
-.paused .play-pause-button .svg-icon.play-icon {
-  display: block
+.left-circle, .right-circle {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  position: absolute;
 }
-.ended .play-pause-button .svg-icon.replay-icon {
-  display: block
+
+.circle-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 100px;
+  position: relative;
 }
+
+/* 재생 버튼 모양을 위한 스타일 */
+.play-button-background {
+  -webkit-backdrop-filter: blur(7px);
+  backdrop-filter: blur(7px);
+  background-color: rgb(66 66 69/70%);
+  border-radius: 32px;
+  box-shadow: inset 0 0 1px rgb(232 232 237/11%);
+  color: rgb(245,245,247);
+  display: flex;
+  will-change: transform;
+  z-index: 1;
+  transition: linear 250ms background-color;
+}
+
+/* 길어진 원을 위한 스타일 */
+.elongated-circle {
+  background-color: gray;
+  width: 100px; /* 기본 너비 수정 */
+  height: 50px;
+  border-radius: 25px / 50px; /* 가로 방향으로 길어짐 */
+  transform: translateX(-50%);
+}
+
 
 .header.show {
   transform: translateY(0);
@@ -163,26 +192,16 @@ body {
   font-size: 18px;
   background: transparent;
 
-  /* Center slide text vertically */
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-/* .swiper-slide img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-} */
-
 .autoplay-progress {
   position: absolute;
-  right: 16px;
-  bottom: 16px;
   z-index: 10;
-  width: 48px;
-  height: 48px;
+  width: 56px;
+  height: 56px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -204,6 +223,87 @@ body {
   stroke-dashoffset: calc(125.6 * (1 - var(--progress)));
   stroke-dasharray: 125.6;
   transform: rotate(-90deg);
+}
+
+.no-scroll {
+  overflow: hidden;
+  height: 100%;
+}
+
+.modalBackdropOut {
+  display: none;
+}
+
+.modalBackdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.modalContent {
+  height: 80%;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  border-radius: 5px;
+  animation: slideUp 0.3s ease-out;
+}
+
+.modalClose {
+  background: rgb(51,51,54);
+  border-radius: 50%;
+  color: rgba(255,255,255,0.8);
+  display: flex;
+  align-items: center;
+  height: 36px;
+  width: 36px;
+  outline: none;
+  transition: color 100ms linear, background 100ms linear;
+  position: relative;
+  pointer-events: none;
+}
+
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+  }
+  to {
+      opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+      transform: translateY(100%);
+  }
+  to {
+      transform: translateY(0);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+      opacity: 1;
+  }
+  to {
+      opacity: 0;
+  }
+}
+
+@keyframes slideOut {
+  from {
+      transform: translateY(0);
+  }
+  to {
+      transform: translateY(100%);
+  }
 }
 
 

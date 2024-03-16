@@ -35,7 +35,8 @@ export default function Header() {
       const scrollTop = window.scrollY || document.documentElement.scrollTop;
       const isVisible = scrollTop < lastScrollY || scrollTop <= 0;
       setIsHeaderVisible(isVisible); // 스크롤이 맨 위에 도달하면 헤더를 보이게 함
-      lastScrollY = scrollTop;
+      // lastScrollY = scrollTop;
+      // lastScrollY = scrollTop;
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -43,7 +44,7 @@ export default function Header() {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, [lastScrollY]);
 
   return (
     <Row ref={headerRef} as="header" className="header show">
@@ -64,7 +65,7 @@ export default function Header() {
       <Row className="my-0 mr-0 ml-auto justify-around ">
         {/* <LinkWrapper links={links} /> */}
       </Row>
-      <MenuButton onClick={toggleSidebar} />
+      {/* <MenuButton onClick={toggleSidebar} /> */}
     </Row>
   );
 }
