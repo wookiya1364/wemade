@@ -3,6 +3,8 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { Providers } from "./providers";
 import Header from "@widgets/header/page";
+import Footer from "@widgets/footer/page";
+import { Column } from "@shared/index";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -31,7 +33,7 @@ export const metadata: Metadata = {
       },
     ],
     locale: "ko",
-    type: "website"
+    type: "website",
   },
   icons: {
     icon: "/assets/night-crow/night-crow.jpeg",
@@ -54,7 +56,10 @@ export default function RootLayout({
       <body className={inter.className}>
         <Providers>
           <Header />
-          {children}
+          <Column as="main" className="px-5">
+            {children}
+          </Column>
+          <Footer />
         </Providers>
       </body>
     </html>
