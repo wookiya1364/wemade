@@ -11,9 +11,9 @@ export default function Icarus() {
       <Column className="w-full h-full">
         <Gallery
           header={`ICARUS M: GUILD WAR`}
-          className="w-full z-[1]"
+          className="relative z-[1] w-[90vw] h-[30vh] md:w-[90vw] md:h-[50vh] lg:w-full lg:h-screen"
           detailDescription={[
-            `▶ 게임 경제 변화의 바람\n모든 게임 경제가 토큰 이코노미에 연결\n완전히 새로워진 경제와 새로운 재화들인 DS(Dragon Scale), SC(Scale Crystal), White Ellun이 여러분을 기다리고 있습니다!`,
+            `▶ 게임 경제 변화의 바람\n모든 게임 경제가 토큰 이코노미에 연결\n완전히 새로워진 경제와 새로운 재화들인 DS(Dragon Scale), SC(Scale Crystal), White Ellun이 여러분을 기다리고 있습니다!\n`,
             `▶ 길드 워 대규모 리메이크\n텐션과 전략있는 3대3 전투로 변경\n"10대10에서 3대3으로 규모가 작아지고 전략적인 아이템과 빠른 속도로 변화!\n하늘을 지배하는 자가 토큰 경제의 정점에도 설 수 있습니다."`,
           ]}
           description={[
@@ -24,6 +24,7 @@ export default function Icarus() {
           srcSet={[
             "/assets/icarus/icarus.jpeg",
             "/assets/icarus/icarus2.png",
+            // "/assets/icarus/icarus3.png",
           ]}
         />
       </Column>

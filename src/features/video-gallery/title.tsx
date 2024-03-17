@@ -9,7 +9,7 @@ export default function VideoGalleryTitle({
   return (
     <Row className="w-full">
       <motion.h2
-        className="typography-site-headline mb-5"
+        className="typography-site-headline mb-5 !text-[80px] max-sm:!text-[28px]"
         initial={{ opacity: 0, transform: "translateY(30px)" }}
         animate={{
           opacity: inView ? 1 : 0,

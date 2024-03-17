@@ -62,7 +62,7 @@ const VideoGallery = React.forwardRef<HTMLImageElement, IGallery>(
               {srcSet?.map((src: string, idx: number) => {
                 return (
                   <SwiperSlide key={src} className="w-full h-full">
-                    <Label className="typography-site-highlights-headline typography-site-highlights-headline-top z-10 text-left">
+                    <Label className="typography-site-highlights-headline typography-site-highlights-headline-top z-10 text-left max-sm:!text-[18px]">
                       {description[idx].split("\n").map((str) => (
                         <Fragment key={`${str}-${idx}`}>
                           {str}
@@ -72,13 +72,13 @@ const VideoGallery = React.forwardRef<HTMLImageElement, IGallery>(
                     </Label>
                     <Image
                       ref={obView}
-                      className="rounded-3xl"
+                      className="rounded-3xl w-[90vw] h-[30vh] md:w-[90vw] md:h-[50vh] lg:w-full lg:h-screen"
                       width={1500}
                       height={1500}
-                      style={{
-                        width: "100%",
-                        height: "100vh",
-                      }}
+                      // style={{
+                      //   width: "100%",
+                      //   height: "100vh",
+                      // }}
                       aria-label={label}
                       alt={label}
                       src={src}

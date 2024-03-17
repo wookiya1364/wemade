@@ -55,6 +55,10 @@ body {
   align-items: center;
 }
 
+.mask-image {
+  mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+}
+
 .typography-site-headline {
   font-size: 48px;
   line-height: 1.1;
@@ -89,6 +93,18 @@ body {
   width: 100px;
   height: 100px;
   position: relative;
+}
+
+.multi-line {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 8;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  /* line-height: 2.5em; */
+  /* height: 8.6em; */
+  line-height: 1rem;
+  height: 5rem;
 }
 
 .two-grid {
@@ -243,6 +259,11 @@ body {
   color: var(--swiper-theme-color);
 }
 
+.img-round-circle {
+  border: 2px inset #f54977;
+  display: inline-block;
+  border-radius: 40px;
+}
 .autoplay-progress svg {
   --progress: 0;
   position: absolute;
@@ -265,7 +286,9 @@ body {
 }
 
 .modalBackdropOut {
-  display: none;
+  /* display: none; */
+  /* animation: fadeOut 0.3s ease-out; */
+  animation: slideUp 0.3s ease-out forwards; /* 애니메이션이 끝난 후 상태 유지 */
 }
 
 .modalBackdrop {
@@ -273,21 +296,20 @@ body {
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   z-index: 10;
   background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
   align-items: center;
-  animation: fadeIn 0.3s ease-out;
+  animation: slideDown 0.3s ease-out forwards;
 }
 
 .modalContent {
-  height: 80%;
-  background-color: rgba(0, 0, 0, 0.5);
+  height: 100vh;
   padding: 20px;
   border-radius: 5px;
-  animation: slideUp 0.3s ease-out;
+  /* animation: slideUp 0.3s ease-out; */
 }
 
 .modalClose {
@@ -304,42 +326,27 @@ body {
   pointer-events: none;
 }
 
-@keyframes fadeIn {
+@keyframes slideDown {
   from {
-      opacity: 0;
+    transform: translateY(-100%);
+    opacity: 0;
   }
   to {
-      opacity: 1;
+    transform: translateY(0);
+    opacity: 1;
   }
 }
 
 @keyframes slideUp {
   from {
-      transform: translateY(100%);
+    transform: translateY(0);
+    opacity: 1;
   }
   to {
-      transform: translateY(0);
+    transform: translateY(-100%);
+    opacity: 0;
   }
 }
-
-@keyframes fadeOut {
-  from {
-      opacity: 1;
-  }
-  to {
-      opacity: 0;
-  }
-}
-
-@keyframes slideOut {
-  from {
-      transform: translateY(0);
-  }
-  to {
-      transform: translateY(100%);
-  }
-}
-
 
 /**
   scrollbar css

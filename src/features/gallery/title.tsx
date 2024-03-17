@@ -1,15 +1,19 @@
+import { cn } from "@shared/cn";
 import { Row } from "@shared/index";
-import React, { Fragment } from "react";
+import React from "react";
 import { motion } from "framer-motion";
+import { MultilineLabel } from "@shared/atom/multiline-label";
 
 export default function GalleryTitle({
   inView,
   description,
+  className,
 }: Readonly<TGalleryTitle>) {
+
   return (
     <Row className="w-full">
       <motion.h2
-        className="typography-site-headline mb-5"
+        className={cn("typography-site-headline mb-5 !text-[80px] max-sm:!text-[28px]", className)}
         initial={{ opacity: 0, transform: "translateY(30px)" }}
         animate={{
           opacity: inView ? 1 : 0,
@@ -17,12 +21,7 @@ export default function GalleryTitle({
         }}
         transition={{ duration: 0.7 }}
       >
-        {description.split("\n").map((str, idx) => (
-          <Fragment key={`${str}-${idx}`}>
-            {str}
-            <br/>
-          </Fragment>
-        ))}
+        <MultilineLabel description={description} />
       </motion.h2>
     </Row>
   );

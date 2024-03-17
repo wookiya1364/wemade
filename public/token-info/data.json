@@ -1,0 +1,44 @@
+[
+  {
+    "name": "sloco",
+    "src": "https://cache.wemixplay.com/WEMIXPLAY-RENEWAL/assets/png/token-icon/sloco-type01.png",
+    "price": "$7.76",
+    "href": "https://wemixplay.com/ko/tokens/SLOCO"
+  },
+  {
+    "name": "tornado",
+    "src": "https://cache.wemixplay.com/WEMIXPLAY-RENEWAL/assets/png/chain-icon/tornado.png",
+    "price": "$0.0002",
+    "href": "https://wemixplay.com/ko/tokens/TORNADO"
+  },
+  {
+    "name": "myrtle",
+    "src": "https://cache.wemixplay.com/WEMIXPLAY-RENEWAL/assets/png/token-icon/myrtle-type01.png",
+    "price": "$3.77",
+    "href": "https://wemixplay.com/ko/tokens/MYRTLE"
+  },
+  {
+    "name": "crow",
+    "src": "https://cache.wemixplay.com/WEMIXPLAY-RENEWAL/assets/png/token-icon/crow-type01.png",
+    "price": "$2.05",
+    "href": "https://wemixplay.com/ko/tokens/CROW"
+  },
+  {
+    "name": "bylo",
+    "src": "https://cache.wemixplay.com/WEMIXPLAY-RENEWAL/assets/png/token-icon/bylo-type01.png",
+    "price": "$1.00",
+    "href": "https://wemixplay.com/ko/tokens/BYLO"
+  },
+  {
+    "name": "hydra",
+    "src": "https://cache.wemixplay.com/WEMIXPLAY-RENEWAL/assets/png/token-icon/hydra-type01.png",
+    "price": "$0.8569",
+    "href": "https://wemixplay.com/ko/tokens/HYDRA"
+  },
+  {
+    "name": "wemix",
+    "src": "https://cache.wemixplay.com/WEMIXPLAY-RENEWAL/assets/png/chain-icon/wemix.png",
+    "price": "$2.6579",
+    "href": "https://wemixplay.com/ko/tokens/WEMIX"
+  }
+]

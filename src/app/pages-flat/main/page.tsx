@@ -5,21 +5,23 @@ import Modal from "@features/modal/page";
 import EveryFarm from "@widgets/detail/everyfarm";
 import Icarus from "@widgets/detail/icarus";
 import { Gap } from "@shared/atom/gap";
+import Token from "@widgets/token/page";
 
-export default function Main() {
-
+export default async function Main() {
   return (
     <Fragment>
-      <Gap size="h-[30vh]"/>
+      <Gap height="!h-[50px]"/>
       <Highlight />
-      <Gap size="h-[30vh]"/>
+      <Gap height="!h-[30vh]"/>
       <NightCrow />
-      <Gap size="h-[30vh]"/>
-      <EveryFarm/>
-      <Gap size="h-[30vh]"/>
-      <Icarus/>
-      <Gap size="h-[30vh]"/>
-      <Modal/>
+      <Gap />
+      <EveryFarm />
+      <Gap />
+      <Icarus />
+      <Gap />
+      <Token />
+      <Gap height="!h-[50px]"/>
+      <Modal />
     </Fragment>
   );
 }

@@ -114,6 +114,13 @@ type TCoin = {
   price: boolean | null;
 }
 
+type TTokenInfo = {
+  name: string;
+  src: string;
+  price: string;
+  href: string;
+}
+
 type TGame = {
   title: string;
   message: string;  
@@ -123,6 +130,7 @@ type TGame = {
 type TGameTitle = Pick<TGame, "title">;
 
 type TGalleryTitle = {
+  className?: string;
   inView: boolean;
   description: string;
 }

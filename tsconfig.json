@@ -25,7 +25,7 @@
       "baseUrl": "./src",
       "paths": {
         "@pages-flat/*": [
-          "pages-flat/*"
+          "app/pages-flat/*"
         ],
         "@widgets/*": [
           "widgets/*"

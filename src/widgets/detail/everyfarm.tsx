@@ -10,7 +10,7 @@ export default function EveryFarm() {
       <Column className="w-full h-full">
         <Gallery
           header={`에브리팜`}
-          className="w-full z-[1]"
+          className="relative z-[1] w-[90vw] h-[30vh] md:w-[90vw] md:h-[50vh] lg:w-full lg:h-screen"
           description={[
             `PLAY, HARVEST, AND EARN4.`,
           ]}

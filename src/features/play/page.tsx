@@ -1,18 +1,20 @@
 import React, { RefObject } from "react";
 import { motion } from "framer-motion";
-import { PlayLeftButton } from "./play-left";
+import { PlayButton } from "./button";
 
 type TGalleryPlay = {
   inPlay: boolean;
   progressRef?: RefObject<SVGSVGElement>;
-  m3u8Set?: string[];
+  detailDescription?: string[];
   srcSet: string[];
+  width?: string;
 };
 
 export default function GalleryPlay({
   inPlay,
-  m3u8Set,
+  detailDescription,
   srcSet,
+  width = "248px",
 }: TGalleryPlay) {
   const circleVariants = {
     initial: {
@@ -34,7 +36,7 @@ export default function GalleryPlay({
         initial="initial"
         animate="animate"
       >
-        <PlayLeftButton width="248px" m3u8Set={m3u8Set} srcSet={srcSet} inPlay={inPlay} />
+        <PlayButton width={width} detailDescription={detailDescription} srcSet={srcSet} inPlay={inPlay} />
       </motion.div>
     </motion.div>
   );

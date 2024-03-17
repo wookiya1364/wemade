@@ -1,10 +1,5 @@
+import { Fragment } from "react";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
-import { Providers } from "./providers";
-import Header from "@widgets/header/page";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "사전제출 메인 페이지",
@@ -14,17 +9,17 @@ export const metadata: Metadata = {
     title: "사전제출 메인 페이지",
     description:
       "메인 페이지에요. Apple의 디자인 요소를 참고해서 애니메이션이 최대한 부각될 수 있도록 만들었어요.",
-    url: "/",
+    url: "/pages-flat",
     siteName: "wemade 사전제출",
     images: [
       {
-        url: "/assets/night-crow/night-crow.jpeg",
+        url: "/assets/everyfarm/everyfarm.jpeg",
         width: 800,
         height: 500,
         alt: "나이트크로우 사진입니다.",
       },
       {
-        url: "/assets/night-crow/night-crow.jpeg",
+        url: "/assets/everyfarm/everyfarm.jpeg",
         width: 1920,
         height: 1080,
         alt: "나이트크로우 사진입니다.",
@@ -34,12 +29,12 @@ export const metadata: Metadata = {
     type: "website"
   },
   icons: {
-    icon: "/assets/night-crow/night-crow.jpeg",
-    shortcut: ["/assets/night-crow/night-crow.jpeg"],
-    apple: "/assets/night-crow/night-crow.jpeg",
+    icon: "/assets/everyfarm/everyfarm.jpeg",
+    shortcut: "/assets/everyfarm/everyfarm.jpeg",
+    apple: "/assets/everyfarm/everyfarm.jpeg",
     other: {
-      rel: "/assets/night-crow/night-crow",
-      url: "/assets/night-crow/night-crow.jpeg",
+      rel: "/assets/everyfarm/everyfarm",
+      url: "/assets/everyfarm/everyfarm.jpeg",
     },
   },
 };
@@ -49,14 +44,5 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return (
-    <html lang="en">
-      <body className={inter.className}>
-        <Providers>
-          <Header />
-          {children}
-        </Providers>
-      </body>
-    </html>
-  );
+  return <Fragment>{children}</Fragment>;
 }

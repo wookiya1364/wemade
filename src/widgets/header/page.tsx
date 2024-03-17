@@ -9,7 +9,7 @@ export default function Header() {
   return (
     <Row as="header" className="header show">
       <Row>
-        <Link href={"/"} className="font-bold text-[2rem]" aria-label="menu">
+        <Link href={"/pages-flat/main"} className="font-bold text-[2rem]" aria-label="menu">
           <Image
             alt=""
             src="https://cache.wemixplay.com/WEMIXPLAY-RENEWAL/assets/images/header/logo-wemixplay.svg"

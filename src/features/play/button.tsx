@@ -6,18 +6,18 @@ import Image from "next/image";
 import useModal from "@shared/state/modal";
 import { Row } from "@shared/index";
 
-export const PlayLeftButton = ({
+export const PlayButton = ({
   inPlay,
-  m3u8Set,
+  detailDescription,
   srcSet,
   width = "168px",
 }: {
   inPlay: boolean;
-  m3u8Set?: string[];
+  detailDescription?: string[];
   srcSet: string[];
   width?: string;
 }) => {
-  const { setOpenToggle, setSrc, setM3u8 } = useModal();
+  const { setOpenToggle, setSrc, setM3u8, setDescription } = useModal();
   return (
     <motion.div
       className="play-button-background left-circle p-2 justify-center"
@@ -27,7 +27,7 @@ export const PlayLeftButton = ({
       }}
       animate={{
         opacity: inPlay ? 1 : 0,
-        x: inPlay ? "-55%" : 0,
+        x: inPlay ? "5%" : 0,
         width: width,
       }}
       transition={{ duration: 0.3, delay: 0.8 }}
@@ -37,9 +37,12 @@ export const PlayLeftButton = ({
           <Row key={src} className="img-round-circle">
             <Image
               onClick={(e) => {
-                if (m3u8Set) {
-                  setM3u8(m3u8Set[idx]);
+                if (detailDescription) {
+                  setDescription(
+                    detailDescription.toString().replaceAll("\n,", "\n")
+                  );
                 }
+                setM3u8("");
                 setSrc(src);
                 setOpenToggle(true);
               }}

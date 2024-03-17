@@ -47,20 +47,24 @@ const Gallery = React.forwardRef<HTMLImageElement, IGallery>(
     }
 
     let gridClass = "two-grid";
-    if(srcSet.length == 3) {
+    
+    if (srcSet.length == 3) {
       gridClass = "three-grid";
-    }
-    else if(srcSet.length == 4) {
+    } else if (srcSet.length == 4) {
       gridClass = "four-grid";
     }
 
     return (
       <Fragment>
-        <GalleryTitle description={header} inView={inView} />
+        <GalleryTitle
+          className="leading-5 min-w-[460px] max-w-[460px]"
+          description={header}
+          inView={inView}
+        />
         <Column className={className}>
-          <Column className="relative w-full h-full">
-            <Label className="typography-site-highlights-headline typography-site-highlights-headline-top z-10 text-left">
-              {description[0].split("\n").map((str,idx) => (
+          <Column className="relative w-full h-screen">
+            <Label className="typography-site-highlights-headline typography-site-highlights-headline-top z-10 text-left max-sm:!text-[18px]">
+              {description[0].split("\n").map((str, idx) => (
                 <Fragment key={`${str}-${idx}`}>
                   {str}
                   <br />
@@ -74,7 +78,7 @@ const Gallery = React.forwardRef<HTMLImageElement, IGallery>(
                   <Image
                     key={`${src}-${idx}`}
                     ref={obView}
-                    className="rounded-3xl grid-item"
+                    className="rounded-3xl grid-item w-[90vw] h-[30vh] md:w-[90vw] md:h-[50vh] lg:w-full lg:h-screen"
                     width={1920}
                     height={800}
                     style={{
@@ -88,14 +92,13 @@ const Gallery = React.forwardRef<HTMLImageElement, IGallery>(
                   />
                 ) : (
                   <Image
-                  key={`${src}-${idx}`}
+                    key={`${src}-${idx}`}
                     ref={obPlay}
-                    className="rounded-3xl grid-item"
+                    className="rounded-3xl grid-item min-w-[30vw] min-h-[20vh] max-h-[30vh]"
                     width={1920}
                     height={800}
                     style={{
                       width: "100%",
-                      height: "40vh",
                     }}
                     aria-label={label}
                     alt={label}
@@ -110,7 +113,10 @@ const Gallery = React.forwardRef<HTMLImageElement, IGallery>(
               {detailDescription.map((str) => (
                 <Row key={str} className="w-full  whitespace-pre-wrap">
                   <motion.p
-                    className="typography-site-highlights-headline z-10 text-left p-8"
+                    className={`typography-site-highlights-headline z-10 text-left p-8
+                    max-md:w-full max-md:leading-[1.2em] max-md:h-[8.6em] max-md:text-ellipsis max-md:line-clamp-6
+                    max-sm:!text-[18px]
+                    `}
                     initial={{
                       opacity: 0,
                       y: "-15%",
@@ -128,7 +134,11 @@ const Gallery = React.forwardRef<HTMLImageElement, IGallery>(
             </Row>
           </Column>
 
-          <GalleryPlay srcSet={srcSet} inPlay={inView} />
+          <GalleryPlay
+            detailDescription={detailDescription}
+            srcSet={srcSet}
+            inPlay={inView}
+          />
         </Column>
       </Fragment>
     );
