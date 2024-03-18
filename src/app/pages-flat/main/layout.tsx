@@ -1,5 +1,13 @@
 import { Fragment } from "react";
 import type { Metadata } from "next";
+import { Viewport } from "next";
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1.0,
+  maximumScale: 1.0,
+  userScalable: false,
+};
 
 export const metadata: Metadata = {
   title: "사전제출 메인 페이지",

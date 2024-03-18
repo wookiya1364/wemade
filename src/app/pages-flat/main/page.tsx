@@ -14,6 +14,7 @@ export default async function Main() {
       <Gap height="!h-[50px]"/>
       <Highlight />
       <Gap height="!h-[30vh]"/>
+      <Gap />
       <NightCrow />
       <Gap />
       <EveryFarm />

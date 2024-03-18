@@ -11,7 +11,7 @@ const Row = React.forwardRef<HTMLDivElement, RowProps>(
     const Component = as ?? "div";
     return (
       <Component
-        className={cn("flex flex-row items-center", className)}
+        className={cn("flex flex-row", className)}
         ref={ref}
         {...props}
       >

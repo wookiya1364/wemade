@@ -11,7 +11,7 @@ export default function GalleryTitle({
 }: Readonly<TGalleryTitle>) {
 
   return (
-    <Row className="w-full">
+    <Row className="w-full pt-8 px-8">
       <motion.h2
         className={cn("typography-site-headline mb-5 !text-[80px] max-sm:!text-[28px]", className)}
         initial={{ opacity: 0, transform: "translateY(30px)" }}

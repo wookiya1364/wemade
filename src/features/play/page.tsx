@@ -5,15 +5,13 @@ import { PlayButton } from "./button";
 type TGalleryPlay = {
   inPlay: boolean;
   progressRef?: RefObject<SVGSVGElement>;
-  detailDescription?: string[];
-  srcSet: string[];
+  gallerys: TGallery[];
   width?: string;
 };
 
 export default function GalleryPlay({
   inPlay,
-  detailDescription,
-  srcSet,
+  gallerys,
   width = "248px",
 }: TGalleryPlay) {
   const circleVariants = {
@@ -29,14 +27,18 @@ export default function GalleryPlay({
   };
 
   return (
-    <motion.div className="sticky h-[10vh] top-0 bottom-0 z-10">
+    <motion.div className="sticky w-full h-[10vh] top-0 bottom-0 z-10 my-0 mx-auto">
       <motion.div
         className="circle-wrapper"
         variants={circleVariants}
         initial="initial"
         animate="animate"
       >
-        <PlayButton width={width} detailDescription={detailDescription} srcSet={srcSet} inPlay={inPlay} />
+        <PlayButton
+          width={width}
+          gallerys={gallerys}
+          inPlay={inPlay}
+        />
       </motion.div>
     </motion.div>
   );

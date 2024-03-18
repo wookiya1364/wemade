@@ -12,7 +12,7 @@ const Column = React.forwardRef<HTMLDivElement, ColumnProps>(
     const Component = as ?? "div";
     return (
       <Component
-        className={cn("flex flex-col items-center", className)}
+        className={cn("flex flex-col", className)}
         ref={ref}
         {...props}
       >

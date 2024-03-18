@@ -17,7 +17,7 @@ const Picture = ({
   description?: string;
 }) => {
   return (
-    <Column className="w-full h-screen">
+    <Column className="w-full h-screen items-center">
       <Column className="h-full">
         <Column className="w-full h-full relative">
           <Image

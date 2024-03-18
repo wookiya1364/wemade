@@ -11,11 +11,12 @@ import { motion } from "framer-motion";
 interface IGallery extends React.ObjectHTMLAttributes<HTMLImageElement> {
   header: string;
   description: string[];
-  detailDescription: string[];
   inPlay?: boolean;
   playRef?: React.ForwardedRef<HTMLDivElement>;
   label: string;
-  srcSet: string[];
+  // detailDescription: string[];
+  // srcSet: string[];
+  gallerys: TGallery[];
 }
 
 const Gallery = React.forwardRef<HTMLImageElement, IGallery>(
@@ -25,9 +26,8 @@ const Gallery = React.forwardRef<HTMLImageElement, IGallery>(
       children,
       header,
       description,
-      detailDescription,
       label,
-      srcSet,
+      gallerys,
     },
     ref
   ) => {
@@ -47,23 +47,23 @@ const Gallery = React.forwardRef<HTMLImageElement, IGallery>(
     }
 
     let gridClass = "two-grid";
-    
-    if (srcSet.length == 3) {
+
+    if (gallerys.length == 3) {
       gridClass = "three-grid";
-    } else if (srcSet.length == 4) {
+    } else if (gallerys.length == 4) {
       gridClass = "four-grid";
     }
 
     return (
       <Fragment>
         <GalleryTitle
-          className="leading-5 min-w-[460px] max-w-[460px]"
+          className="leading-5 w-full max-w-[460px]"
           description={header}
           inView={inView}
         />
         <Column className={className}>
           <Column className="relative w-full h-screen">
-            <Label className="typography-site-highlights-headline typography-site-highlights-headline-top z-10 text-left max-sm:!text-[18px]">
+            <Label className="w-[70%] typography-site-highlights-headline typography-site-highlights-headline-top z-10 text-left max-sm:!text-[18px]">
               {description[0].split("\n").map((str, idx) => (
                 <Fragment key={`${str}-${idx}`}>
                   {str}
@@ -73,26 +73,27 @@ const Gallery = React.forwardRef<HTMLImageElement, IGallery>(
             </Label>
 
             <Column className={gridClass}>
-              {srcSet.map((src, idx) => {
+              {gallerys.map((gallery, idx) => {
                 return idx == 0 ? (
                   <Image
-                    key={`${src}-${idx}`}
+                    key={`${gallery.src}-${idx}`}
                     ref={obView}
-                    className="rounded-3xl grid-item w-[90vw] h-[30vh] md:w-[90vw] md:h-[50vh] lg:w-full lg:h-screen"
+                    className="rounded-3xl grid-item w-full h-[30vh] md:w-[90vw] md:h-[50vh] lg:w-full lg:h-screen"
                     width={1920}
                     height={800}
                     style={{
                       width: "100%",
-                      height: "40vh",
+                      height: "100%",
+                      minHeight: "300px",
                     }}
                     aria-label={label}
                     alt={label}
-                    src={src}
+                    src={gallery.src}
                     priority
                   />
                 ) : (
                   <Image
-                    key={`${src}-${idx}`}
+                    key={`${gallery.src}-${idx}`}
                     ref={obPlay}
                     className="rounded-3xl grid-item min-w-[30vw] min-h-[20vh] max-h-[30vh]"
                     width={1920}
@@ -102,41 +103,45 @@ const Gallery = React.forwardRef<HTMLImageElement, IGallery>(
                     }}
                     aria-label={label}
                     alt={label}
-                    src={src}
+                    src={gallery.src}
                     priority
                   />
                 );
               })}
             </Column>
 
-            <Row className="w-full px-8">
-              {detailDescription.map((str) => (
-                <Row key={str} className="w-full  whitespace-pre-wrap">
-                  <motion.p
-                    className={`typography-site-highlights-headline z-10 text-left p-8
-                    max-md:w-full max-md:leading-[1.2em] max-md:h-[8.6em] max-md:text-ellipsis max-md:line-clamp-6
-                    max-sm:!text-[18px]
-                    `}
-                    initial={{
-                      opacity: 0,
-                      y: "-15%",
-                    }}
-                    animate={{
-                      opacity: cleanView ? 1 : 0,
-                      y: cleanView ? 0 : "-15%",
-                    }}
-                    transition={{ duration: 0.7, delay: 0.3 }}
+            <Row className="w-full">
+              {gallerys.map((gallery, idx) => {
+                return gallery.description ? (
+                  <Row
+                    key={`${gallery.description}-${idx}`}
+                    className="w-full whitespace-pre-wrap"
                   >
-                    {str}
-                  </motion.p>
-                </Row>
-              ))}
+                    <motion.p
+                      className={`typography-site-highlights-headline z-10 text-left px-2
+                    max-md:w-full max-md:leading-[1.2em] max-md:text-ellipsis
+                    max-sm:!text-[18px] max-md:line-clamp-[7] h-[150px]
+                    `}
+                      initial={{
+                        opacity: 0,
+                        y: "-15%",
+                      }}
+                      animate={{
+                        opacity: cleanView ? 1 : 0,
+                        y: cleanView ? 0 : "-15%",
+                      }}
+                      transition={{ duration: 0.7, delay: 0.3 }}
+                    >
+                      {gallery.description}
+                    </motion.p>
+                  </Row>
+                ) : null;
+              })}
             </Row>
           </Column>
 
           <GalleryPlay
-            detailDescription={detailDescription}
-            srcSet={srcSet}
+            gallerys={gallerys}
             inPlay={inView}
           />
         </Column>

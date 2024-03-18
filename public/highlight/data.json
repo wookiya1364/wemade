@@ -1,0 +1,22 @@
+[
+  {
+    "m3u8": "/videos/night-crow/night-crow.m3u8",
+    "src": "/assets/night-crow/night-crow.jpeg",
+    "title": "나이트크로우"
+  },
+  {
+    "m3u8": "/videos/icarus/icarus.m3u8",
+    "src": "/assets/icarus/icarus.jpeg",
+    "title": "ICARUS M: GUILD WAR"
+  },
+  {
+    "m3u8": "/videos/everyfarm/everyfarm.m3u8",
+    "src": "/assets/everyfarm/everyfarm.jpeg",
+    "title": "에브리팜"
+  },
+  {
+    "m3u8": "/videos/mir4/mir4.m3u8",
+    "src": "/assets/mir4/mir4.jpeg",
+    "title": "MIR4"
+  }
+]

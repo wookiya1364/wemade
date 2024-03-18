@@ -20,16 +20,15 @@ import VideoGalleryPlay from "@features/video-play/page";
 
 interface IGallery extends React.ObjectHTMLAttributes<HTMLImageElement> {
   header: string;
-  description: string[];
   inPlay?: boolean;
   playRef?: React.ForwardedRef<HTMLDivElement>;
   label: string;
-  m3u8Set: string[];
-  srcSet: string[];
+  gallerys: TVideoGallery[];
 }
 
 const VideoGallery = React.forwardRef<HTMLImageElement, IGallery>(
-  ({ className, children, header, description, label, m3u8Set, srcSet }, ref) => {
+  ({ className, children, header, gallerys, label }, ref) => {
+
     const [obView, inView] = useInView({ triggerOnce: false, threshold: 0.2 }); // 화면의 20%가 보일 때 애니메이션이 실행되도록 설정
     const [obPlay, inPlay] = useInView({ triggerOnce: false, threshold: 1 }); // 화면의 100%가 보일 때 애니메이션이 실행되도록 설정
     const [timer, setTimer] = useState(3);
@@ -38,7 +37,7 @@ const VideoGallery = React.forwardRef<HTMLImageElement, IGallery>(
       progressRef.current?.style.setProperty("--progress", `${1 - progress}`);
       setTimer(Math.ceil(time / 1000 - progress));
     };
-    const isList = srcSet.length > 1;
+    const isList = gallerys.length > 1;
     const { setSwiper } = useGalleryStore();
 
     return (
@@ -52,49 +51,53 @@ const VideoGallery = React.forwardRef<HTMLImageElement, IGallery>(
               effect={"fade"}
               centeredSlides={true}
               autoplay={{
-                delay: 1000 * 5,
+                delay: 1000 * 1,
                 disableOnInteraction: false,
               }}
               modules={[Autoplay, EffectFade]}
               onAutoplayTimeLeft={onAutoplayTimeLeft}
-              className="rounded-lg w-full"
+              className="rounded-lg"
             >
-              {srcSet?.map((src: string, idx: number) => {
-                return (
-                  <SwiperSlide key={src} className="w-full h-full">
-                    <Label className="typography-site-highlights-headline typography-site-highlights-headline-top z-10 text-left max-sm:!text-[18px]">
-                      {description[idx].split("\n").map((str) => (
-                        <Fragment key={`${str}-${idx}`}>
-                          {str}
-                          <br />
-                        </Fragment>
-                      ))}
-                    </Label>
-                    <Image
-                      ref={obView}
-                      className="rounded-3xl w-[90vw] h-[30vh] md:w-[90vw] md:h-[50vh] lg:w-full lg:h-screen"
-                      width={1500}
-                      height={1500}
-                      // style={{
-                      //   width: "100%",
-                      //   height: "100vh",
-                      // }}
-                      aria-label={label}
-                      alt={label}
-                      src={src}
-                      priority
-                    />
-                  </SwiperSlide>
-                );
-              })}
+              {
+                gallerys.map((gallery: TVideoGallery, idx: number) => {
+                  return (
+                    <SwiperSlide key={gallery.src} className="w-full h-full">
+                      <Label className="typography-site-highlights-headline typography-site-highlights-headline-top z-10 text-left max-sm:!text-[18px]">
+                        {gallery.title.split("\n").map((str) => (
+                          <Fragment key={`${str}-${idx}`}>
+                            {str}
+                            <br />
+                          </Fragment>
+                        ))}
+                      </Label>
+                      <Image
+                        ref={obView}
+                        className="rounded-3xl w-screen"
+                        width={1500}
+                        height={1500}
+                        style={{
+                          width: "100%",
+                          height: "100%",
+                          minHeight: "300px",
+                          maxHeight: "500px",
+                        }}
+                        aria-label={label}
+                        alt={label}
+                        src={gallery.src}
+                        priority
+                      />
+                    </SwiperSlide>
+                  );
+                })
+              }
+
             </Swiper>
             <Column className="absolute h-[60%] top-[20%]" ref={obPlay} />
           </Column>
 
           {isList ? (
             <VideoGalleryPlay
-              m3u8Set={m3u8Set}
-              srcSet={srcSet}
+              gallerys={gallerys}
               progressRef={progressRef}
               inPlay={inPlay}
               timer={timer}

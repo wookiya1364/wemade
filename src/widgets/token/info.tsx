@@ -14,7 +14,7 @@ export default function TokenInfo() {
   return (
     <Column>
       <Row className="w-full px-8">
-        <Column className="w-full  whitespace-pre-wrap">
+        <Column className="w-full  whitespace-pre-wrap max-sm:items-center">
           {detailDescription.split("\n").map((str) => {
             return (
               <motion.p
@@ -37,7 +37,7 @@ export default function TokenInfo() {
           <br />
         </Column>
       </Row>
-      <Column className="w-full h-full max-w-[670px]" ref={obPlay}>
+      <Column className="w-full h-full max-w-[670px] items-center" ref={obPlay}>
         {data?.map((token) => {
           return (
             <Row

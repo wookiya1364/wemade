@@ -8,13 +8,11 @@ import { Row } from "@shared/index";
 
 export const PlayLeftButton = ({
   inPlay,
-  m3u8Set,
-  srcSet,
+  gallerys,
   width = "168px",
 }: {
   inPlay: boolean;
-  m3u8Set?: string[];
-  srcSet: string[];
+  gallerys: TVideoGallery[];
   width?: string;
 }) => {
   const { setOpenToggle, setSrc, setM3u8 } = useModal();
@@ -27,27 +25,27 @@ export const PlayLeftButton = ({
       }}
       animate={{
         opacity: inPlay ? 1 : 0,
-        x: inPlay ? "-55%" : 0,
+        x: inPlay ? "-40px" : 0,
         width: width,
       }}
       transition={{ duration: 0.3, delay: 0.8 }}
     >
-      {srcSet.map((src, idx) => {
+      {gallerys.map((gallery, idx) => {
         return (
-          <Row key={src} className="img-round-circle">
+          <Row key={gallery.src} className="img-round-circle">
             <Image
               onClick={(e) => {
-                if (m3u8Set) {
-                  setM3u8(m3u8Set[idx]);
+                if (gallery.m3u8) {
+                  setM3u8(gallery.m3u8);
                 }
-                setSrc(src);
+                setSrc(gallery.src);
                 setOpenToggle(true);
               }}
               aria-colindex={idx}
               className="rounded-3xl cursor-pointer h-full"
               aria-label={""}
               alt={""}
-              src={src}
+              src={gallery.src}
               width={35}
               height={35}
               priority

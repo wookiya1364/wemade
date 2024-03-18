@@ -1,10 +1,10 @@
 import { HOST } from "@shared/util";
 import { useQuery } from "@tanstack/react-query";
 
-export default function useToken() {
-    const { data, isPending, error } = useQuery<TToken[]>({
-        queryKey: ['token'],
-        queryFn: () => fetch(`${HOST}/token/data.json`, {
+export default function useHighlight() {
+    const { data, isPending, error } = useQuery<TVideoGallery[]>({
+        queryKey: ['highlight'],
+        queryFn: () => fetch(`${HOST}/highlight/data.json`, {
             method: "GET",
         }).then(res => res.json()),
         staleTime: 1000 * 60,

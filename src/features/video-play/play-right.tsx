@@ -17,7 +17,7 @@ export const PlayRightButton = ({
       initial={{ opacity: 0, x: 0 }}
       animate={{
         opacity: inPlay ? 1 : 0,
-        x: inPlay ? "65%" : 0,
+        x: inPlay ? "80px" : 0,
       }}
       transition={{ duration: 0.3, delay: 0.5 }}
     >

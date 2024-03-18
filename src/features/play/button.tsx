@@ -8,16 +8,18 @@ import { Row } from "@shared/index";
 
 export const PlayButton = ({
   inPlay,
-  detailDescription,
-  srcSet,
+  gallerys,
   width = "168px",
 }: {
   inPlay: boolean;
-  detailDescription?: string[];
-  srcSet: string[];
+  gallerys: TGallery[];
   width?: string;
 }) => {
+  
   const { setOpenToggle, setSrc, setM3u8, setDescription } = useModal();
+  
+  if(gallerys === undefined) return <></>;
+
   return (
     <motion.div
       className="play-button-background left-circle p-2 justify-center"
@@ -32,25 +34,25 @@ export const PlayButton = ({
       }}
       transition={{ duration: 0.3, delay: 0.8 }}
     >
-      {srcSet.map((src, idx) => {
+      {gallerys.map((gallery, idx) => {
         return (
-          <Row key={src} className="img-round-circle">
+          <Row key={`${gallery.src}-${idx}`} className="img-round-circle">
             <Image
               onClick={(e) => {
-                if (detailDescription) {
+                if (gallery.description) {
                   setDescription(
-                    detailDescription.toString().replaceAll("\n,", "\n")
+                    gallery.description.toString().replaceAll("\n,", "\n")
                   );
                 }
                 setM3u8("");
-                setSrc(src);
+                setSrc(gallery.src);
                 setOpenToggle(true);
               }}
               aria-colindex={idx}
               className="rounded-3xl cursor-pointer h-full"
               aria-label={""}
               alt={""}
-              src={src}
+              src={gallery.src}
               width={35}
               height={35}
               priority
