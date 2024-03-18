@@ -51,7 +51,7 @@ const VideoGallery = React.forwardRef<HTMLImageElement, IGallery>(
               effect={"fade"}
               centeredSlides={true}
               autoplay={{
-                delay: 1000 * 1,
+                delay: 1000 * 3,
                 disableOnInteraction: false,
               }}
               modules={[Autoplay, EffectFade]}
