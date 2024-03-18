@@ -57,7 +57,7 @@ const Gallery = React.forwardRef<HTMLImageElement, IGallery>(
     return (
       <Fragment>
         <GalleryTitle
-          className="leading-5 w-full max-w-[460px]"
+          className="leading-5 w-full"
           description={header}
           inView={inView}
         />
